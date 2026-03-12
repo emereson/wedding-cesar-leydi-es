@@ -1,0 +1,98 @@
+import { memo } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+
+function Contacts() {
+  return (
+    <>
+      <div className="sticky top-0 left-0 w-screen h-[50vh] hidden max-sm:block">
+        <img
+          className="w-6/10 h-dvh max-sm:w-full max-sm:h-[50vh]"
+          src="/img/10.webp"
+          alt="Portada"
+          width={1000}
+          height={1000}
+        />
+      </div>
+
+      <section className="relative w-screen h-screen flex bg-[#45524c] justify-end max-sm:h-auto max-sm:py-10">
+        <div
+          className="animation-scroll w-4/10 h-screen flex items-center justify-center
+          max-lg:relative max-lg:w-full max-lg:justify-start max-lg:items-start max-lg:p-6 max-sm:h-auto"
+        >
+          <div
+            className=" -left-10 bg-[url(/img/hoja.webp)] bg-cover bg-center p-10 text-[#8f8269] text-center space-y-4 z-10 animate-on-scroll
+            max-sm:left-0 max-sm:w-full"
+          >
+            <h2 className="font-[extraCursive] text-7xl animate-on-scroll max-sm:text-5xl">
+              Contacto
+            </h2>
+
+            <div className="w-full flex items-center justify-center gap-10">
+              {/* Novia */}
+              <article className="flex flex-col items-center animate-on-scroll">
+                <img
+                  className="m-auto h-30 w-30 max-sm:h-25 max-sm:w-25"
+                  style={{ objectFit: "fill" }}
+                  src="/icons/p1.png"
+                  alt="Novia"
+                  width={150}
+                  height={150}
+                />
+
+                <a
+                  href="https://wa.me/+16615927141"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp a la novia"
+                  className="h-12.5 flex items-center gap-2 bg-[#8f8269] text-white text-2xl rounded-xl px-6 max-sm:text-xl"
+                >
+                  <FaWhatsapp />
+                  Novia
+                </a>
+              </article>
+
+              {/* Novio */}
+              <article className="flex flex-col items-center animate-on-scroll">
+                <img
+                  className="m-auto h-30 w-30 max-sm:h-25 max-sm:w-25"
+                  style={{ objectFit: "fill" }}
+                  src="/icons/p2.png"
+                  alt="Novio"
+                  width={150}
+                  height={150}
+                />
+
+                <a
+                  href="https://wa.me/18185999064"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp al novio"
+                  className="h-12.5 flex items-center gap-2 bg-[#8f8269] text-white text-2xl rounded-xl px-6 max-sm:text-xl"
+                >
+                  <FaWhatsapp />
+                  Novio
+                </a>
+              </article>
+            </div>
+
+            <p className="text-2xl mt-6 max-sm:text-xl">
+              Si tienes alguna duda, ¡puedes contactarnos!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="sticky top-0 left-0 w-screen h-screen -mt-[100vh] max-sm:h-[50vh] max-sm:hidden">
+        <img
+          className="w-6/10 h-dvh max-sm:w-full max-sm:h-[50vh]"
+          src="/img/10.webp"
+          alt="Portada"
+          width={1000}
+          height={1000}
+        />
+      </div>
+    </>
+  );
+}
+
+export default memo(Contacts);
