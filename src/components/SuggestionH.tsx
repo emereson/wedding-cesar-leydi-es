@@ -105,7 +105,7 @@ function SuggestionH() {
                     </h3>
 
                     <a
-                      href="https://www.google.com/maps/place/7941+E+Brundage+Ln,+Bakersfield,+CA+93307,+EE.+UU./@35.353824,-118.915633,20.23z/data=!4m6!3m5!1s0x80ea6cf987a91f45:0x160c82cf37c7398b!8m2!3d35.3536987!4d-118.9156067!16s%2Fg%2F11b8v4wzp0?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D"
+                      href="https://www.google.com/maps/place/WoodSpring+Suites+Bakersfield+East/@35.353535,-118.911319,19.09z/data=!4m17!1m7!3m6!1s0x80ea6d0006aa88bd:0x77bc5f499a9ff39b!2sMilan+Events+Center!8m2!3d35.3529845!4d-118.9107028!16s%2Fg%2F11wj5xqz9z!3m8!1s0x80ea6cfc14ce8fe1:0xb19598d9153e7366!5m2!4m1!1i2!8m2!3d35.3535614!4d-118.9116592!16s%2Fg%2F11c1s2px80?hl=en-US&entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D"
                       className="w-fit flex items-center justify-center gap-2 text-3xl border border-[#45524c] px-4 py-2 hover:bg-[#45524c] hover:text-white cursor-pointer transition max-lg:text-xl"
                       target="_blank"
                     >
