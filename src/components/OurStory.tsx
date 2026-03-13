@@ -12,7 +12,7 @@ import {
   Scrollbar,
 } from "swiper/modules";
 
-// JSON array with story data
+// Array JSON con los datos de la historia
 const storyData = [
   {
     img: "/img/ourStories/01.webp",
@@ -30,7 +30,7 @@ const storyData = [
     img: "/img/ourStories/03.webp",
     icon: "/img/ourStories/A03.webp",
     title: "NUESTRO PRIMER VIAJE A LAS VEGAS",
-    description: "Nuestro primer viaje a Las Vegas, Septiembre 2012",
+    description: "Septiembre, 2012",
   },
 ];
 
@@ -45,7 +45,6 @@ function OurStory() {
           <h2 className="animate-on-scroll text-7xl max-lg:text-4xl">
             NUESTRA
           </h2>
-
           <h3 className="animate-on-scroll font-[extraCursive] text-9xl max-lg:text-7xl">
             Historia
           </h3>
@@ -79,7 +78,9 @@ function OurStory() {
                 <SwiperSlide key={index} className="w-full">
                   <div className="flex flex-col items-center justify-center gap-4 px-10 max-lg:px-6">
                     <img
-                      className={`${index === 0 ? "rotate-90" : ""} w-62.5 h-62.5 rounded-sm shadow-md shadow-neutral-800`}
+                      className={`${
+                        index === 0 ? "rotate-90" : ""
+                      } w-62.5 h-62.5 rounded-sm shadow-md shadow-neutral-800`}
                       src={item.img}
                       alt={item.title}
                       width={500}
@@ -95,7 +96,6 @@ function OurStory() {
                     />
 
                     <h4 className="text-4xl max-lg:text-2xl">{item.title}</h4>
-
                     <p className="text-xl max-lg:text-lg">{item.description}</p>
                   </div>
                 </SwiperSlide>

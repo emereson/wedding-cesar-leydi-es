@@ -14,14 +14,16 @@ export const FloatingAudioPlayer = ({ audioSrc }: { audioSrc: string }) => {
   const handleComplete = () => {
     setIsScratched(true);
 
+    // Explosión central
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ["#d4af37", "#ffffff", "#45524c"],
+      colors: ["#d4af37", "#ffffff", "#8f8269"],
       disableForReducedMotion: true,
     });
 
+    // Ráfagas laterales
     let count = 0;
     const interval = setInterval(() => {
       confetti({
@@ -31,7 +33,6 @@ export const FloatingAudioPlayer = ({ audioSrc }: { audioSrc: string }) => {
         origin: { x: 0, y: 0.8 },
         colors: ["#d4af37", "#ffffff"],
       });
-
       confetti({
         particleCount: 20,
         angle: 120,
@@ -52,9 +53,7 @@ export const FloatingAudioPlayer = ({ audioSrc }: { audioSrc: string }) => {
   const handleStartInvitation = () => {
     audioRef.current?.play().catch(console.error);
     setIsPlaying(true);
-
     setIsExiting(true);
-
     setTimeout(() => {
       setViewFixed(false);
     }, 1000);
@@ -70,67 +69,93 @@ export const FloatingAudioPlayer = ({ audioSrc }: { audioSrc: string }) => {
   };
 
   return (
-    <div className="fixed bottom-3 right-3 z-50">
+    <>
+      {/* 1. ELEMENTO DE AUDIO OCULTO */}
       <audio ref={audioRef} src={audioSrc} preload="auto" loop />
 
-      {/* Pantalla Inicial */}
+      {/* 2. PANTALLA DE BIENVENIDA */}
       {viewFixed && (
         <div
-          className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-1000 ${
+          className={`fixed inset-0 z-100 flex flex-col items-center justify-center bg-[#fdfcf8] transition-opacity duration-1000 ${
             isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
-          <div className="relative z-10 flex flex-col items-center w-full px-4">
+          {/* Textura de fondo */}
+          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_center,transparent_0%,#f0eee5_100%)]"></div>
+
+          <div className="relative z-10 flex flex-col items-center w-full px-6">
             {/* Título */}
-            <div className="relative h-16 mb-6 flex justify-center items-center w-full">
+            <div className="h-24 mb-4 flex justify-center items-end w-full">
               <h1
-                className={`text-center font-serif transition-all duration-1000 tracking-widest font-black ${
+                className={`text-center transition-all duration-1000 ${
                   isScratched
-                    ? "text-[#d4af37] text-2xl md:text-4xl uppercase tracking-[0.4em]"
-                    : "text-[#d4af37] text-4xl"
+                    ? "text-[#d4af37] text-3xl md:text-4xl uppercase tracking-[0.3em] font-serif"
+                    : "text-[#8f8269] text-6xl md:text-7xl font-[extraCursive]"
                 }`}
               >
-                {isScratched ? "Nuestra Boda" : "¡Bienvenidos!"}
+                {isScratched ? "Nuestra Boda" : "Bienvenidos"}
               </h1>
             </div>
 
-            <ScratchHeart
-              isScratched={isScratched}
-              onComplete={handleComplete}
-            />
+            {/* Corazón raspa y gana */}
+            <div className="my-6 drop-shadow-xl">
+              <ScratchHeart
+                isScratched={isScratched}
+                onComplete={handleComplete}
+              />
+            </div>
 
-            {/* Botón iniciar */}
-            <div className="mt-12 h-16 flex items-center justify-center w-full relative">
+            {/* Texto de instrucción */}
+            {!isScratched && (
+              <p className="-mt-6 text-xs md:text-sm uppercase tracking-[0.3em] text-[#8f8269] animate-pulse">
+                Raspa para revelar
+              </p>
+            )}
+
+            {/* Botón de inicio */}
+            <div className="-mt-6 h-16 flex items-center justify-center w-full relative">
               <button
                 onClick={handleStartInvitation}
-                className={`px-10 py-3 bg-[#d4af37] cursor-pointer text-white font-serif font-bold tracking-widest uppercase rounded-full shadow-lg shadow-[#d4af37]/40 transform transition-all duration-1000 hover:scale-105 ${
+                className={`flex items-center gap-3 px-10 py-3 bg-transparent border border-[#d4af37] text-[#d4af37] font-serif text-sm tracking-widest uppercase rounded-full transition-all duration-700 hover:bg-[#d4af37] hover:text-white hover:scale-105 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] ${
                   showStartButton
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10 pointer-events-none"
+                    : "opacity-0 translate-y-8 pointer-events-none"
                 }`}
               >
-                Ver invitación
+                Entrar a la invitación
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Reproductor flotante */}
+      {/* 3. BOTÓN FLOTANTE DE AUDIO */}
       {!viewFixed && (
-        <div className="relative animate-in fade-in zoom-in duration-700">
-          <div
-            className="w-14 h-14 rounded-full shadow-lg flex items-center justify-center border border-gray-100 bg-white cursor-pointer"
-            onClick={togglePlay}
-          >
-            {isPlaying ? (
-              <FaPause className="w-5 h-5 text-[#d4af37]" />
-            ) : (
-              <FaPlay className="w-5 h-5 text-[#d4af37] ml-1" />
+        <div className="fixed bottom-6 right-6 z-90 animate-in fade-in zoom-in slide-in-from-bottom-5 duration-1000">
+          <div className="relative group">
+            {/* Efecto de onda */}
+            {isPlaying && (
+              <div className="absolute inset-0 rounded-full bg-[#d4af37] opacity-40 animate-ping"></div>
             )}
+
+            <button
+              onClick={togglePlay}
+              className={`relative w-14 h-14 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center border transition-all duration-500 hover:scale-110 ${
+                isPlaying
+                  ? "bg-[#fdfcf8] border-[#d4af37]/30"
+                  : "bg-[#d4af37] border-transparent"
+              }`}
+              aria-label="Activar o pausar audio"
+            >
+              {isPlaying ? (
+                <FaPause className="w-5 h-5 text-[#d4af37]" />
+              ) : (
+                <FaPlay className="w-5 h-5 text-white ml-1" />
+              )}
+            </button>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
