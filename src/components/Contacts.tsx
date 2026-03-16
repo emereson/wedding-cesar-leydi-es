@@ -40,7 +40,7 @@ function Contacts() {
                 />
 
                 <a
-                  href="https://wa.me/+16615927141"
+                  href="https://wa.me/+16617133931"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp a la novia"
